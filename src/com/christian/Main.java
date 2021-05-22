@@ -10,15 +10,6 @@ public class Main {
         // Creating a thread and runnning it
         //new Thread(new CodeToRun()).start();
 
-        //Annonymous class of thread runnable
-         /* new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(" printing from runnable ");
-            }
-        }).start();
-        */
-
         //if one line no semi colon
         new Thread(()->{
             System.out.println("Line 1");
@@ -37,29 +28,29 @@ public class Main {
         employees.add(emp2);
         employees.add(emp3);
 
-        //Sort employees
-/*        Collections.sort(employees, new Comparator<Employee>() {
-            @Override
-            public int compare(Employee o1, Employee o2) {
-                return o1.getName().compareTo(o2.getName());
-            }
-        });*/
-
 
         //Sort Employee using Lambda
-
         Collections.sort(employees,(e1,e2)->
                 e1.getName().compareTo(e2.getName())
                 );
 
         //Print Employees
-
         for(Employee e: employees){
             System.out.println(e.getName());
         }
 
+        String sillyString=doStringStuff(new UpperConcat() {
+            @Override
+            public String upperConcat(String s1, String s2) {
+                return s1.toUpperCase() + s2.toUpperCase();
+            }
+        }, employees.get(0).getName(),employees.get(1).getName());
 
+        System.out.println(sillyString);
+    }
 
+    public final static String doStringStuff(UpperConcat uc, String s1, String s2){
+        return uc.upperConcat(s1,s2);
     }
 }
 
