@@ -40,7 +40,11 @@ public class Main {
         }
 
         //Lambda definiton
-        UpperConcat uc=(s1,s2) -> (s1.toUpperCase()+s2.toUpperCase());
+        UpperConcat uc=(s1,s2) ->
+                {
+                    String result= s1.toUpperCase()+s2.toUpperCase();
+                    return result;
+                };
 
         String sillyString=doStringStuff(uc,employees.get(0).getName(),employees.get(1).getName());
 
@@ -51,14 +55,18 @@ public class Main {
             }
         }, employees.get(0).getName(),employees.get(1).getName());*/
 
-
-
         System.out.println(sillyString);
+
+        SomeClass sc= new SomeClass();
+        String s= sc.doSomthing();
+        System.out.println(">>>>>SOme class: " + s);
     }
 
     public final static String doStringStuff(UpperConcat uc, String s1, String s2){
+
         return uc.upperConcat(s1,s2);
     }
+
 }
 
 /*
