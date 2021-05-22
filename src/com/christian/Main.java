@@ -35,9 +35,19 @@ public class Main {
                 );
 
         //Print Employees
-        for(Employee e: employees){
-            System.out.println(e.getName());
-        }
+//        for(Employee e: employees){
+//            System.out.println(e.getName());
+//            // will orint out of order and random age (different threads)
+//            new Thread(()->System.out.println(e.getAge())).start();
+//        }
+
+
+        //For each using lambda
+        employees.forEach(emp->{
+            System.out.println(emp.getName());
+            System.out.println(emp.getAge());
+        });
+
 
         //Lambda definiton
         UpperConcat uc=(s1,s2) ->
@@ -48,12 +58,6 @@ public class Main {
 
         String sillyString=doStringStuff(uc,employees.get(0).getName(),employees.get(1).getName());
 
-/*        String sillyString=doStringStuff(new UpperConcat() {
-            @Override
-            public String upperConcat(String s1, String s2) {
-                return s1.toUpperCase() + s2.toUpperCase();
-            }
-        }, employees.get(0).getName(),employees.get(1).getName());*/
 
         System.out.println(sillyString);
 
@@ -68,12 +72,3 @@ public class Main {
     }
 
 }
-
-/*
-class CodeToRun implements Runnable{
-
-    @Override
-    public void run() {
-        System.out.println("Printing from the Runnable");
-    }
-}*/
